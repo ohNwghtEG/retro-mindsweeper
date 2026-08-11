@@ -1,4 +1,4 @@
-# Retro-Mindsweeper Game💣
+# Retro-Mindsweeper Game Project
 
 A desktop implementation of the classic **Minesweeper** game developed in Python using the **Tkinter** GUI framework.
 
@@ -99,16 +99,17 @@ Tkinter event bindings connect mouse interactions to the game's logic. Left-clic
 
 ## Technologies
 
-* **Python 3**
-* **Tkinter**
+* **Python**
+* **Tkinter (Import)**
 * `random` — randomized mine placement
 * `time` — game timing
+You can import most of these as done in the code.
 
 ## Installation & Execution
 
 ### Requirements
 
-* Python 3.x
+* Any type of coding software or service that uses Python
 * Tkinter
 
 The project does not require any third-party Python packages.
@@ -118,7 +119,7 @@ The project does not require any third-party Python packages.
 Clone the repository:
 
 ```bash
-git clone YOUR-REPOSITORY-URL
+git clone (https://github.com/ohNwghtEG/retro-mindsweeper)
 ```
 
 Navigate to the project directory:
