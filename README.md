@@ -1,5 +1,4 @@
-# Retro-Mindsweeper Game
-# 💣 Retro Minesweeper
+# Retro-Mindsweeper Game💣
 
 A desktop implementation of the classic **Minesweeper** game developed in Python using the **Tkinter** GUI framework.
 
