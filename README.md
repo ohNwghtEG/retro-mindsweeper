@@ -33,7 +33,7 @@ The project combines a graphical user interface with randomized mine generation,
 
 ### Difficulty Selection
 
-![Difficulty Selection](Difficulty-Menu)
+![Difficulty Selection](screenshots/Difficulty-Menu)
 
 ### Game Completion
 
