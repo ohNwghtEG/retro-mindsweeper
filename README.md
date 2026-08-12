@@ -3,7 +3,7 @@
 ### Short Description
 A desktop implementation of the classic **Minesweeper** game developed in Python using the **Tkinter** GUI framework. This was used as my AP Computer Science Principles project, and since the year is finished with scores all released, I decided to post it as my first-ever GitHub repo and share my proud game with other users! 
 
-The project combines a graphical user interface with randomized mine generation, dynamic difficulty configuration, recursive cell revealing, flag management, win/loss detection, and an integrated game timer. Bombs are placed **after** the first click, preventing users from dying on the first click when they have no evidence to play off of. I coded this feature after my teacher encountered it after a test run, showing the importance of collaboration in Coding. The name "Retro-Mindsweeper" was created due to its 8-Bit graphics and the fact that I thought the game was called MindSweeper instead of Minesweeper. **Funny, right?**
+The project combines a graphical user interface with randomized mine generation, dynamic difficulty configuration, recursive cell revealing, flag management, win/loss detection, and an integrated game timer. Bombs are placed **after** the first click, preventing users from dying on the first click when they have no evidence to play off of. I coded this feature after my teacher encountered it during a test run, showing the importance of collaboration in Coding. The name "Retro-Mindsweeper" was created due to its 8-Bit graphics and the fact that I thought the game was called MindSweeper instead of Minesweeper. **Funny, right?**
 
 ## Features
 
@@ -23,6 +23,7 @@ The project combines a graphical user interface with randomized mine generation,
 * Built-in instructions and configuration screens
 
 ## Screenshots
+Here are some screenshots from the output of my code! 
 
 ### Main Menu
 
@@ -45,7 +46,7 @@ This image is slightly different, as I had to change some of the code and run it
 
 ![Loss Screen](screenshots/Loss-Screen)
 
-## Gameplay
+## Gameplay Explanation
 
 The objective is to reveal every non-mine cell without detonating a mine.
 
@@ -84,6 +85,8 @@ The game represents the board as a two-dimensional list. Each cell contains a di
 This structure allows the game to independently track and update each cell.
 
 ### Mine Generation
+
+(I stated this at the start, but in case you skipped over the description)
 
 Mines are generated randomly after the player's first move rather than when the board is initially created.
 
