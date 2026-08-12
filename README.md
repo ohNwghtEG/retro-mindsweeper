@@ -29,15 +29,19 @@ The project combines a graphical user interface with randomized mine generation,
 
 ### Gameplay
 
-![Gameplay](screenshots/gameplay.png)
+![Gameplay](screenshots/Gameplay)
 
 ### Difficulty Selection
 
-![Difficulty Selection](screenshots/options.png)
+![Difficulty Selection](Difficulty-Menu)
 
 ### Game Completion
 
-![Win Screen](screenshots/win-screen.png)
+![Win Screen](screenshots/win-screen)
+
+### Losing a Game
+
+![Loss Screen](screenshots/Loss-Screen)
 
 ## Gameplay
 
