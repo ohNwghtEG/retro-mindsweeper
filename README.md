@@ -1,14 +1,14 @@
 # Retro-Mindsweeper Game Project
 
-A desktop implementation of the classic **Minesweeper** game developed in Python using the **Tkinter** GUI framework.
+A desktop implementation of the classic **Minesweeper** game developed in Python using the **Tkinter** GUI framework. This was used as my AP Computer Science Principles project, and since the year is finished with scores all released, I decided to post it as my first-ever GitHub repo and share my proud game with other users! 
 
-The project combines a graphical user interface with randomized mine generation, dynamic difficulty configuration, recursive cell revealing, flag management, win/loss detection, and an integrated game timer.
+The project combines a graphical user interface with randomized mine generation, dynamic difficulty configuration, recursive cell revealing, flag management, win/loss detection, and an integrated game timer. The name "Retro-Mindsweeper" was created due to its 8-Bit graphics and the fact that I thought the game was called MindSweeper instead of Minesweeper **funny, right?**
 
 ## Features
 
 * **Three difficulty levels**
 
-  * Easy — 9 × 9 board with 10 mines
+  * Easy Mode — 9 × 9 board with 10 mines
   * Medium — 12 × 12 board with 35 mines
   * Hard — 12 × 12 board with 99 mines
 * Graphical interface built with Tkinter
