@@ -25,7 +25,7 @@ The project combines a graphical user interface with randomized mine generation,
 
 ### Main Menu
 
-![Main Menu](screenshots/Main-Menu)
+![Main Menu](screenshots/Screenshot%202026-05-02%20214428.png)
 
 ### Gameplay
 
