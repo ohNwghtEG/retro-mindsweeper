@@ -35,11 +35,11 @@ The project combines a graphical user interface with randomized mine generation,
 
 ![Difficulty Selection](screenshots/Difficulty-Menu)
 
-### Game Completion
+### Win Screen
+This image is slightly different, as I had to change some of the code and run it on different software, as my original platform broke and I needed to code it again.
+![Win Screen](screenshots/Win-Screen)
 
-![Win Screen](screenshots/win-screen)
-
-### Losing a Game
+### Loss Screen
 
 ![Loss Screen](screenshots/Loss-Screen)
 
