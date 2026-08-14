@@ -169,7 +169,7 @@ The game was also tested with peers to identify bugs, usability issues, and pote
 
 ## Key Learning Outcomes
 
-Through this project, I developed experience with:
+This is my first **PLAYABLE** game, as I am still relatively new to coding. Here are the most important skills I've learned through coding "Retro-Mindsweeper":
 
 * GUI development
 * Event-driven programming
@@ -185,14 +185,16 @@ Through this project, I developed experience with:
 
 Potential improvements include:
 
-* Persistent high scores and fastest completion times
-* Additional board configurations
-* Custom difficulty settings
-* Sound effects and visual feedback
-* Additional themes
-* Improved accessibility
-* More advanced statistics and performance tracking
+* New game modes (for example, infinite mode, where you try to get the highest score possible or story mode, where there is an actual plot and lore. Even a mode where the player has lives and etc!)
+* Multiplayer with competition (for example, you and a friend compete for the highest score or fastest time)
+* Persistent high scores and fastest completion times (leaderboards)
+* Additional board configurations (adding more buttons or something)
+* Custom difficulty settings (Players can choose the exact number of bombs placed, tiles, time, etc.)
+* Sound effects and visual feedback (for when you click a tile, explode a bomb, or even main menu music)
+* Additional themes (different backgrounds and better visuals)
+* Improved accessibility (for mobile users)
+* More advanced statistics and performance tracking 
 
 ## License
 
-This project was developed as a personal/student programming project.
+This project was developed as a personal/student programming project. For more information, check the License section in this repo.
