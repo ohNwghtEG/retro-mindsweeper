@@ -1,4 +1,4 @@
-# Retro-Mindsweeper Game Project
+# 💣 Retro-Mindsweeper Game Project 💣
 
 ### Short Description
 A desktop implementation of the classic **Minesweeper** game developed in Python using the **Tkinter** GUI framework. This was used as my AP Computer Science Principles project, and since the year is finished with scores all released, I decided to post it as my first-ever GitHub repo and share my proud game with other users! 
