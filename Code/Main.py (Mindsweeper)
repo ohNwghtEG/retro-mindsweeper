@@ -1,12 +1,6 @@
 import tkinter as tk
 import time
 import random
-#i looked at youtube videos on tutorials on using tkinter and other features, but I did
-#not copy down any code and only used the methods and skills I learned from those videos
-#in my coding.
-#I did ask friends to help test my game, debug and etc. They did not write any code for
-#me, and only gave me suggestions for how I can improve the code. I was present when the
-#code was tested, and I used trial and error when figuring out solutions.
 root = tk.Tk()
 root.configure(bg="grey")
 root.title("A Mindsweeper Game ")
@@ -24,8 +18,7 @@ MINES = 10
 COLORS = {1:"#1565C0", 2:"#2E7D32", 3: "#C62828", 4: "#4527A0", 5: "#6D4C41", 6:
 "#00838F", 7: "#AD1457", 8: "#424242"
 }
-
-#a list of the directions around the cell/square. This helps optimize to check how many
+#A list of the directions around the cell/square. This helps optimize to check how many
 #bombs are around a square the player clicks.
 #The pairs are formatted like (row change, column change)
 #e.g. (-1, 0) means go up 1 row and stay in the same column
