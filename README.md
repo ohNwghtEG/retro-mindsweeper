@@ -128,7 +128,7 @@ The project does not require any third-party Python packages.
 Clone the repository:
 
 ```bash
-git clone (https://github.com/ohNwghtEG/retro-mindsweeper)
+git clone (https://github.com/ohNwghtEG/retro-mindsweeper.git)
 ```
 
 Navigate to the project directory:
@@ -185,7 +185,7 @@ Here are the most important skills I've learned through coding "Retro-Mindsweepe
 
 Potential improvements include:
 
-* New game modes (for example, infinite mode, where you try to get the highest score possible or story mode, where there is an actual plot and lore. Even a mode where the player has lives and etc!)
+* New game modes (for example, infinite mode, where you try to get the highest score possible or story mode, where there is an actual plot and lore. Even a mode where the player has lives, etc!)
 * Multiplayer with competition (for example, you and a friend compete for the highest score or fastest time)
 * Persistent high scores and fastest completion times (leaderboards)
 * Additional board configurations (adding more buttons or something)
@@ -202,4 +202,4 @@ Copyright (C) 2026 [Ethan Gao]
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version. For more information, check the License section in this repo. 
+(at your option) any later version. For more information, check the License section in this repo. Some comments have been changed in my game, and the formatting too, as the coding software I used to code this game was slightly different from regular software like VS.
