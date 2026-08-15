@@ -169,7 +169,7 @@ The game was also tested with peers to identify bugs, usability issues, and pote
 
 ## Key Learning Outcomes
 
-This is my first **PLAYABLE** game, as I am still relatively new to coding. Here are the most important skills I've learned through coding "Retro-Mindsweeper":
+Here are the most important skills I've learned through coding "Retro-Mindsweeper":
 
 * GUI development
 * Event-driven programming
@@ -197,4 +197,9 @@ Potential improvements include:
 
 ## License
 
-This project was developed as a personal/student programming project. For more information, check the License section in this repo.
+Copyright (C) 2026 [Ethan Gao]
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version. For more information, check the License section in this repo. 
