@@ -1,12 +1,11 @@
 import tkinter as tk
 import time
 import random
-
-#i looked at youtube videos on tutorials on using tkinter and other features, but I did 
-#not copy down any code and only used the methods and skills I learned from those videos 
-#in my coding. 
-#I did ask friends to help test my game, debug and etc. They did not write any code for 
-#me, and only gave me suggestions for how I can improve the code. I was present when the 
+#i looked at youtube videos on tutorials on using tkinter and other features, but I did
+#not copy down any code and only used the methods and skills I learned from those videos
+#in my coding.
+#I did ask friends to help test my game, debug and etc. They did not write any code for
+#me, and only gave me suggestions for how I can improve the code. I was present when the
 #code was tested, and I used trial and error when figuring out solutions.
 root = tk.Tk()
 root.configure(bg="grey")
@@ -20,22 +19,22 @@ ROWS = 9
 COLS = 9
 MINES = 10
 #colors
-#I didn't want basic colors, so I went to a color picker and got the hex number for the 
-#colors I think looked the coolest. 
-COLORS = {1:"#1565C0", 2:"#2E7D32", 3: "#C62828", 4: "#4527A0", 5: "#6D4C41", 6: 
+#I didn't want basic colors, so I went to a color picker and got the hex number for the
+#colors I think looked the coolest.
+COLORS = {1:"#1565C0", 2:"#2E7D32", 3: "#C62828", 4: "#4527A0", 5: "#6D4C41", 6:
 "#00838F", 7: "#AD1457", 8: "#424242"
 }
 
-#a list of the directions around the cell/square. This helps optimize to check how many 
+#a list of the directions around the cell/square. This helps optimize to check how many
 #bombs are around a square the player clicks.
 #The pairs are formatted like (row change, column change)
 #e.g. (-1, 0) means go up 1 row and stay in the same column
 #I made it look like a square so i can visualize it better
-Directions = [(-1, -1),(-1, 0), (-1, 1), 
-              (0, -1), (0, 1), 
-              (1, -1), (1, 0), (1, 1)]
+Directions = [(-1, -1),(-1, 0), (-1, 1),
+              (0, -1),          (0, 1),
+              (1, -1),   (1, 0), (1, 1)]
 
-#the 3 different difficulties as a dictionary, 
+#the 3 different difficulties as a dictionary,
 #The dictionary storing the settings for each difficulty.
 #Each difficulty has its own number of rows, columns and mines.
 Difficulty_settings = {
@@ -59,8 +58,8 @@ FlagLeft = MINES
 StartTime = 0
 timerID = None
 
-#The main screens for my game. Each screen is a frame. I use center frame inside every 
-#screen to keep everything centred. This was a challenge I faced, but after some water 
+#The main screens for my game. Each screen is a frame. I use center frame inside every
+#screen to keep everything centred. This was a challenge I faced, but after some water
 #and hard thinking, I managed to solve it.
 screen_main = tk.Frame(root, bg="grey")
 main_center = tk.Frame(screen_main, bg = "grey")
@@ -80,27 +79,24 @@ game_center.place(relx = 0.5, rely = 0.5, anchor = "center")
 
 #this loops over every screen to place them identically
 screens = [screen_main, screen_game, screen_info, screen_options]
-
 for screen in screens:
     screen.place(relx = 0, rely = 0, relwidth = 1, relheight = 1)
 
 def show_screen(screen):
-    #positions the screen so it can be seen over other windows. e.g. if you opened 
-    #options and then you opened info, this would place the info window above the options 
+    #positions the screen so it can be seen over other windows. e.g. if you opened
+    #options and then you opened info, this would place the info window above the options
     #window.
     screen.tkraise()
 
 #this is my main menu screen
 tk.Label(main_center, text="Retro Mindsweeper",
          font=("Arial", 70, "bold"), bg="grey", fg="white").pack()
-
 tk.Label(main_center, text="Now in Python!",
          font=("Arial", 50, "bold"), bg="grey", fg="blue").pack()
-
 #The buttons for players to select their gamemode
-#This is my list where each item is a pair. The button text and what it does when its 
+#This is my list where each item is a pair. The button text and what it does when its
 #clicked.
-#Instead of writing 4 different buttons, I loop through this list and create them the 
+#Instead of writing 4 different buttons, I loop through this list and create them the
 #same way, just more efficiently.
 menu_buttons = [
     ("Play!", lambda: start_game()),
@@ -108,7 +104,6 @@ menu_buttons = [
     ("Options", lambda: show_screen(screen_options)),
     ("Exit", root.destroy),
 ]
-
 #This is the loop that goes through each pair in menu_buttons
 #text is the label on the button, and the action is what happens when you click it
 for text, action in menu_buttons:
@@ -122,42 +117,34 @@ for text, action in menu_buttons:
 #this is the title for the info screen
 tk.Label(info_center, text="How to Play Minesweeper?",
          font=("Arial", 40, "bold"), fg = "white", bg = "grey").pack()
-
 #each label is a seperate sentence that explains how the game is played
 tk.Label(info_center, text="Left-Click to reveal a cell!",
          font=("Arial", 15), fg = "white", bg = "grey").pack()
-
 tk.Label(info_center, text="Right-Click to place or remove a flag!",
          font=("Arial", 15), fg = "white", bg = "grey").pack()
-
 tk.Label(info_center, text="Numbers on the cells show how many bombs touch that cell.",
          font=("Arial", 15), fg = "white", bg = "grey").pack()
-
-tk.Label(info_center, text="Click the , LOSS or WIN to reset the board!", font = 
+tk.Label(info_center, text="Click the     , LOSS or WIN to reset the board!", font =
          ("Arial", 15), fg = "white", bg = "grey").pack()
-
-tk.Label(info_center, text="Avoid all the BOMBS to WIN! ", font=("Arial", 15), fg = 
+tk.Label(info_center, text="Avoid all the BOMBS to WIN!      ", font=("Arial", 15), fg =
          "white", bg = "grey").pack()
-
-tk.Button(info_center, text="BACK", 
-          #it's show_screen(screen_main) because I need to raise the outer screen and 
+tk.Button(info_center, text="BACK",
+          #it's show_screen(screen_main) because I need to raise the outer screen and
           #not the inner one.
-          command=lambda: show_screen(screen_main), font = ("Arial", 15), fg = "white", 
+          command=lambda: show_screen(screen_main), font = ("Arial", 15), fg = "white",
           bg = "grey").pack()
 
 #My options screen
 
-tk.Label(options_center, text="Options", font=("Arial", 35, "bold"), fg ="white", bg = 
+tk.Label(options_center, text="Options", font=("Arial", 35, "bold"), fg ="white", bg =
          "grey").pack()
 
-tk.Label(options_center, text="Choose your Difficulty", font=("Arial", 20), fg 
+tk.Label(options_center, text="Choose your Difficulty", font=("Arial", 20), fg
          ="white", bg = "grey").pack()
-
 #StringVar stores which difficulty the player selected. It starts on easy by default.
 difficulty_choose = tk.StringVar(value="Easy")
-
-#This loop creates a radio button for each difficulty in the difficulty_settings. Radio 
-#buttons only let the player pick one option at a time. This is good for difficulty 
+#This loop creates a radio button for each difficulty in the difficulty_settings. Radio
+#buttons only let the player pick one option at a time. This is good for difficulty
 #selection, as they can't pick more than 1.
 for choice in Difficulty_settings:
     tk.Radiobutton(
@@ -172,69 +159,57 @@ for choice in Difficulty_settings:
 def apply_selected_options():
     #global means the actual rows columns and mines variables are changing.
     global ROWS, COLS, MINES
-
     #looks at which difficulty the player picked
     config = Difficulty_settings[difficulty_choose.get()]
-
     #updates the rows cols and mines to match the chosen difficulty
     ROWS = config["rows"]
     COLS = config["cols"]
     MINES = config["mines"]
-
     #reset the game with the new settings and go back to the main menu
     new_game()
     show_screen(screen_main)
-
 #This button applies and saves the difficulty and goes back to the menu.
 tk.Button(options_center, text="Apply!",
-          command = apply_selected_options,
-          font=("Arial", 14, "bold"),
-          fg="white", bg="#25852a").pack()
+         command = apply_selected_options,
+         font=("Arial", 14, "bold"),
+         fg="white", bg="#25852a").pack()
 
 #Back button goes back without saving the changes
-tk.Button(options_center, text="Back", 
-          command=lambda: show_screen(screen_main), font = ("Times New Roman", 20), bg = 
-          "#9716a6", fg = "white").pack()
+tk.Button(options_center, text="Back",
+    command=lambda: show_screen(screen_main), font = ("Times New Roman", 20), bg =
+    "#9716a6", fg = "white").pack()
 
 #This is the main game screen
-#this frame holds the top bar consisting of menu button, flag count, reset button and 
+#this frame holds the top bar consisting of menu button, flag count, reset button and
 #the timer.
 game_start = tk.Frame(game_center, bg = "grey")
 game_start.pack()
-
 #This button takes the player back to the main menu
 tk.Button(game_start, text="Menu",
           command = lambda: show_screen(screen_main),
           font=("Arial", 15), bg="grey", fg="white").pack()
 
 #shows the flags left the player can still place.
-label_mines = tk.Label(game_start, text="Flags: " + str(MINES), font=("Times New 
-                                                             Roman", 15, "bold"), bg="grey", fg="red", width = 10, anchor = "w")
-
+label_mines = tk.Label(game_start, text="Flags: " + str(MINES), font=("Times New Roman", 15, "bold"), bg="grey", fg="red", width = 10, anchor = "w")
 #anchor = w just positions it to the left. w means west, which is towards the left.
 label_mines.pack(side="left")
-
-#reset button shows a smilely face when playing. it changes to either win or lose after 
+#reset button shows a smilely face when playing. it changes to either win or lose after
 #the game ends
-button_reset = tk.Button(game_start, text="", font = ("Times New Roman", 14), relief = 
-                         "groove", command = lambda: new_game())
-
+button_reset = tk.Button(game_start, text="   ", font = ("Times New Roman", 14), relief =
+"groove", command = lambda: new_game())
 #Makes the text shift to the left.
 button_reset.pack(side = "left", expand = True)
-
 #shows the amount of time passed since the first click
 label_timer = tk.Label(game_start, text = "Time: 0",
-                       font =("Arial", 15, "bold"), bg = "grey", fg = "white", width = 10, anchor = "e")
+font =("Arial", 15, "bold"), bg = "grey", fg = "white", width = 10, anchor = "e")
 
 label_timer.pack(side = "right")
-
 #This frame is where the cell buttons get placed in a grid
 board_frame = tk.Frame(game_center, bg = "grey")
 board_frame.pack()
-
 #This label displays the win/lose message after the game
-label_msg = tk.Label(game_center, text = "", font = ("Times New Roman", 15), bg = 
-                     "grey", fg = "white")
+label_msg = tk.Label(game_center, text = "", font = ("Times New Roman", 15), bg =
+"grey", fg = "white")
 label_msg.pack()
 
 #This is where the game logic is.
@@ -243,14 +218,12 @@ def board_building():
     #modify the actual board list
     global board
     board = []
-
     #this is a nested loop (loop in a loop).
     #The outer loop goes through each row, the inner loop goes through each column
     for r in range(ROWS):
         row = []
-
         for c in range(COLS):
-            #Each cell is a dictionary that stores 4 things about that square. 
+            #Each cell is a dictionary that stores 4 things about that square.
             row.append({
                 # is there a mine?
                 "mine": False,
@@ -261,8 +234,7 @@ def board_building():
                 #How many mines are around the cell? (out of 8 surrounding cells.)
                 "count": 0
             })
-
-        board.append(row) 
+        board.append(row)
 
 def count_neighbours():
     #This goes through every cell on the board
@@ -270,12 +242,10 @@ def count_neighbours():
         for c in range(COLS):
             #reset the count to 0 before checking this cell
             board[r][c]["count"] = 0
-
             #Loop through the 8 directions using the Directions list
             for change_row, change_column in Directions:
                 neighbour_row = r + change_row
                 neighbour_column = c + change_column
-
                 #makes sure the neighbour cell is actually on the board.
                 if 0 <= neighbour_row < ROWS and 0 <= neighbour_column < COLS:
                     if board[neighbour_row][neighbour_column]["mine"]:
@@ -286,130 +256,101 @@ def reveal_cell(r,c):
     #These are the base cases. Conditions that stop the function from going on further
     #out of bounds vertically
     if r < 0 or r >= ROWS: return
-
     #horizontally out of bounds
     elif c < 0 or c>= COLS: return
-
     #already covered, so skip
     elif board[r][c]["revealed"]: return
-
     #already flagged, skip
     elif board[r][c]["flagged"]: return
-
     #never automatically reveal a mine
     elif board[r][c]["mine"]: return
-
     #mark as revealed and update how it looks on the screen
     board[r][c]["revealed"] = True
     draw_cell(r,c)
-
     #If the cell has 0 mines nearby, automatically reveal all the 8 neighbouring cells too
-    #This is called recursion, where the function calls itself on each neighbour. Those 
+    #This is called recursion, where the function calls itself on each neighbour. Those
     #neighbours call it on their neighbours, and so on.
     if board[r][c]["count"] == 0:
         for change_row, change_column in Directions:
             reveal_cell(r + change_row, c + change_column)
-
-#this function will basically draw the cells/squares to be more compatible with player 
+#this function will basically draw the cells/squares to be more compatible with player
 #interactions
 def draw_cell(r,c):
     #get data for this cell and its button widget
     cell = board[r][c]
     button = buttons[r][c]
-
     if cell["flagged"]:
         #F means flagged, with a yellow background so it looks good and stands out.
         button.config(text="F", bg="#ffe270", state = "normal", relief = "raised")
-
-        #state determines if the button can be clicked or not. It's normal right now, so it 
+        #state determines if the button can be clicked or not. It's normal right now, so it
         #can be clicked
-        #relief is like the 3D appearance of the button. Raised means it looks raised and not 
+        #relief is like the 3D appearance of the button. Raised means it looks raised and not
         #clicked.
         #cell hasn't been clicked yet, show it as a blank grey button.)
     elif not cell["revealed"]:
         button.config(text="", bg="grey", state="normal", relief = "raised")
-
     elif cell["mine"]:
         #X means bomb
         button.config(text="X", bg = "#c72c2c", state="disabled", relief = "sunken")
-
-        #here, state is disabled, meaning it can't be clicked. Relief is also sunken, so the 
+        #here, state is disabled, meaning it can't be clicked. Relief is also sunken, so the
         #button/square/cell looks pressed down.
     elif cell["count"] > 0:
-        button.config(text=str(cell["count"]), bg = "grey", state="disabled", relief = 
+        button.config(text=str(cell["count"]), bg = "grey", state="disabled", relief =
                       "sunken", disabledforeground = COLORS[cell["count"]])
-
-        #disabledforeground changes the color depending on the number of mines around the 
+        #disabledforeground changes the color depending on the number of mines around the
         #square. It uses the colors dictionary
     else:
         button.config(text="", bg="grey", state = "disabled", relief = "sunken")
-
 #left click
 
 def left_click(r,c):
     global GameOver, GameStarted, StartTime
-
     #if the game is over, do nothing
     if GameOver: return
-
     #if the cell is uncovered, do nothing
     if board[r][c]["revealed"]: return
-
     #if the cell is flagged, do nothing
     if board[r][c]["flagged"]: return
-
-    #on the very first click, start the timer and place the mines. Since the mines are 
-    #placed here and after the first click (not the start), the first click is always safe. 
+    #on the very first click, start the timer and place the mines. Since the mines are
+    #placed here and after the first click (not the start), the first click is always safe.
     #I implemented this after some buddies tested my code and died on the first attempt.
     if not GameStarted:
         GameStarted = True
         StartTime = time.time()
-
         #place mines but skip the cell the player just clicked
         place_mines_safely(r, c)
-
         #calculate the numbers for every cell
         count_neighbours()
-
         #start timer
         tick()
-
     if board[r][c]["mine"]:
-        #player clicked a mine, turning the square red and ending the game. (other mines 
+        #player clicked a mine, turning the square red and ending the game. (other mines
         #are revealed with X's)
         board[r][c]["revealed"] = True
         buttons[r][c].config(text="", bg = "red", state = "disabled")
         end_game(False)
-
     else:
         #Player clicked safe cell.
         reveal_cell(r,c)
-
         #Checks if player has won
         check_win()
-
 #What happens when you right click. (Flag mechanics)
 
 def right_click(r, c):
     global FlagLeft
-
     #game already ended, do nothing
     if GameOver: return
-
     #can't flag a cell that has been uncovered already
     if board[r][c]["revealed"]: return
-
     #cell has already been flagged, so remove the flag and give player flag back
     if board[r][c]["flagged"]:
         board[r][c]["flagged"] = False
         FlagLeft = FlagLeft + 1
-
     else:
         #No flag is on the square, so place a flag and remove a flag from player.
         if FlagLeft > 0:
             board[r][c]["flagged"] = True
             FlagLeft = FlagLeft - 1
-
     #update flag counter and redraw the cell.
     label_mines.config(text="Flags: " + str(FlagLeft))
     draw_cell(r, c)
@@ -418,132 +359,107 @@ def check_win():
     #Loop through every cell on the board
     for r in range(ROWS):
         for c in range(COLS):
-            #if we find any safe cell that hasn't been revealed yet, then the game isn't 
+            #if we find any safe cell that hasn't been revealed yet, then the game isn't
             #over, return, and keep playing.
             if board[r][c]["mine"] == False and board[r][c]["revealed"] == False:
                 return
-
-    #if we check the entire board without returning, every safe cell has been 
+    #if we check the entire board without returning, every safe cell has been
     #revealed and the player wins!
     end_game(True)
 
 def end_game(won):
     global GameOver
     GameOver = True
-
     if won:
         #calculates how long the player took
         TimeElapsed = int(time.time() - StartTime)
         button_reset.config(text = "WIN")
-        label_msg.config(text = "YOU WON IN " + str(TimeElapsed) + " seconds!", fg = 
+        label_msg.config(text = "YOU WON IN " + str(TimeElapsed) + " seconds!", fg =
                          "white")
-
     else:
         button_reset.config(text = "LOSS")
         label_msg.config(text = "BOOM! Close one! Try Again!", fg = "white")
-
-    #reveals the mines the player didn't find after losing.
-    for r in range(ROWS):
-        for c in range(COLS):
-            if board[r][c]["mine"] and not board[r][c]["revealed"]:
-                board[r][c]["revealed"] = True
-                draw_cell(r, c)
-
-    #disables every button so the player can't keep clicking after losing.
-    for r in range(ROWS):
-        for c in range(COLS):
-            buttons[r][c].config(state = "disabled")
+        #reveals the mines the player didn't find after losing.
+        for r in range(ROWS):
+            for c in range(COLS):
+                if board[r][c]["mine"] and not board[r][c]["revealed"]:
+                    board[r][c]["revealed"] = True
+                    draw_cell(r, c)
+        #disables every button so the player can't keep clicking after losing.
+        for r in range(ROWS):
+            for c in range(COLS):
+                buttons[r][c].config(state = "disabled")
 
 def tick():
     global timerID
-
     #only update the timer if game is still going
     if not GameOver and GameStarted:
         elapsed = int(time.time() - StartTime)
         label_timer.config(text = "Time: " + str(elapsed))
-
-        #tells tkinter to call tick() again after 1 second or 1000 milliseconds. We update 
+        #tells tkinter to call tick() again after 1 second or 1000 milliseconds. We update
         #the timer every second without freezing our window
         timerID = root.after(1000, tick)
 
 #This function places the mines
 def place_mines_safely(first_r, first_c):
     currently_placed_mines = 0
-
     while currently_placed_mines < MINES:
         #Pick a random row and column on the board
         r = random.randint(0, ROWS - 1)
         c = random.randint(0, COLS - 1)
-
-        #Skip if the cell was just clicked by the player for their first click. Making sure 
+        #Skip if the cell was just clicked by the player for their first click. Making sure
         #the first click is never a mine, as I mentioned before.
         if (r == first_r and c == first_c):
             continue
-
         if not board[r][c]["mine"]:
             board[r][c]["mine"] = True
             currently_placed_mines += 1
 
 def new_game():
     global GameOver, GameStarted, FlagLeft, StartTime, timerID
-
     #cancels the old timer if one is running so there isn't 2 timers going on at once
     if timerID:
         root.after_cancel(timerID)
-
-    timerID = None
-
+        timerID = None
     #Resets all the game variables back to their original, starting values.
     GameOver = False
     GameStarted = False
     FlagLeft = MINES
     StartTime = 0
-
     #Reset all the labels and buttons back to their starting appearance
-    button_reset.config(text = "")
+    button_reset.config(text = "     ")
     label_mines.config(text = "Flags: " + str(FlagLeft))
     label_timer.config(text="Time: 0")
     label_msg.config(text = "")
-
     #Builds a fresh empty board. (no mines until first click)
     board_building()
-
     #remove all the old cell buttons from the board frame
     for widget in board_frame.winfo_children():
         widget.destroy()
-
     buttons.clear()
-
     #creates a new button for every cell and places it in the grid
     for r in range(ROWS):
         row_buttons = []
-
         for c in range(COLS):
             btn = tk.Button(
-                board_frame, text = "", width = 2, height = 1, font = ("Arial", 14, "bold"), bg 
+                board_frame, text = "", width = 2, height = 1, font = ("Arial", 14, "bold"), bg
                 = "grey", relief = "raised")
-
             #grid() places the button at position (row, column) in the board frame
             btn.grid(row = r, column = c)
-
             #Bind left click and right click with their functions
             #Use lambda with r = r and c = c to remember which cell this button belongs to
             btn.bind("<Button-1>", lambda e, r = r, c = c: left_click(r, c))
             btn.bind("<Button-3>", lambda e, r = r, c = c: right_click(r, c))
-
             row_buttons.append(btn)
-
         buttons.append(row_buttons)
 
 def start_game():
     #Starts a new game and switch to the game screen
     new_game()
     show_screen(screen_game)
-
 #shows the main menu first when the program starts.
 show_screen(screen_main)
-
-#mainloop() hands control to tkinter, keeping the window open, listening for clicks, 
-#etc. 
+#mainloop() hands control to tkinter, keeping the window open, listening for clicks,
+#etc.
 #The program stays here until the window is closed
 root.mainloop()
